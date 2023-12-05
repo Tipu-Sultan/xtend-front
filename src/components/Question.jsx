@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './question.css';
 
 function Question() {
-  const HOST = process.env.HOST || 'http://localhost:8050';
+  let HOST = '';
+  if (process.env.NODE_ENV === 'production') {
+    HOST = 'https://xtend-back.onrender.com';
+  } else {
+    // Assuming development environment
+    HOST = 'http://localhost:8080';
+  }
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
