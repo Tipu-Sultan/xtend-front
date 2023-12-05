@@ -32,8 +32,9 @@ function Question() {
           <div key={index}>
             <p className="question">{index + 1}. {question.question}</p>
             <ul className="options">
-              {question.options.map((option, i) => (
-                <li key={i} className="option">{String.fromCharCode(65 + i)}. {option}</li>
+              {/* Limit options to the first four elements */}
+              {question.options.slice(0, 4).map((option, i) => (
+                <li key={i} className="option">{option}</li>
               ))}
             </ul>
             <p className="correct-answer">Correct Answer: {question.correctAnswer}</p>
